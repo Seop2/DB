@@ -35,6 +35,18 @@ select ename as '사원이름'from emp
 -- as 사원번호
 select EMPNO  as '사원번호'from emp
 
+-- select: 조회할 때 사용
+-- select<컬럼이름> from <테이블 이름>
+select ename from emp; 
+-- 1개 이상 컬럼을 조회할 때는 ,콤마 사용
+select ename, empno from emp
+-- 사원번호, 사원이름, 직책 조회
+select EMPNO ,ENAME , JOB from emp;
+-- as(별칭)
+select ename as '사원이름'from emp
+-- as 사원번호
+select EMPNO  as '사원번호'from emp
+
 select * from emp
 -- where
 -- 20번 부서 사원 모두 조회
@@ -54,3 +66,30 @@ select ENAME, EMPNO from EMP where ENAME like '%L%L%';
 select SAL ,EMPNO from emp where COMM is null;
 -- 보너스를 받은 사원의 급여와 번호를 조회
 select SAL ,EMPNO from emp where COMM is not null;
+-- 입사날짜가 1987-06-28 이상인 사원이름, 번호, 직책 조회
+select ename, empno, job, hiredate from emp where HIREDATE >= '1987-06-28';
+-- 문제4.입사일이 1980-12-17 ~ 1982-01-23 사이에 입사한 사원의 이름, 번호, 입사날짜, 직책을 조회하시오.
+select ENAME, EMPNO ,JOB ,HIREDATE from emp 
+where HIREDATE >='1980-12-17'and HIREDATE <='1982-01-23';
+-- 문제5. 직업이 MANAGER고, 급여가 1300이상 받은 사원번호,이름,급여,직업 조회
+select EMPNO, ename, sal, job from emp where JOB ='MANAGER'and SAL >=1300;
+-- avg, count, max, min 함수 (단일행 함수)
+-- 직업이 manager인 사원들의 급여 평균 조회
+select avg(sal) as "급여 평균", job from emp where job = 'manager';
+-- 직업이 CLERK인 사원 수 조회
+select COUNT(EMPNO)  from EMP where JOB = 'CLERK';
+-- 직업이 CLERK인 급여 최대값 조회
+select MAX(SAL) from EMP where JOB = 'CLERK'
+-- 직업이 CLERK인 급여 최솟값 조회
+select MIN(SAL) from EMP where JOB = 'CLERK'
+
+-- 문제6. 입사날짜가 '1987-06-28' 이상인 사원들의 수와 급여 평균 조회
+select COUNT(ENAME), AVG(SAL) from emp where HIREDATE >='1987-06-28';
+-- 문제7. 직책이 MANAGER가 아닌 사원이름, 직책 조회
+select ENAME, JOB from EMP where JOB != 'MANAGER';
+-- 문제8. 사원 이름이 'SCOTT','JONES'인 사원의 이름,번호,급여, 입사날짜 조회
+select ENAME, EMPNO, SAL, HIREDATE from EMP where ENAME ='SCOTT'or ENAME ='JONES';
+
+
+
+
