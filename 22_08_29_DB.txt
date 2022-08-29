@@ -1,0 +1,56 @@
+mysql 
+데이터베이스 -> 테이블 -> 데이터
+데이터베이스 종류
+관계형 데이터베이스
+비관계형 데이터베이스(nosql) - 데이터 분석용
+시계열 데이터베이스 - 데이터분석용
+빅데이터
+-sql
+DML(note auto commit) : SELECT, UPDATE, DELETE, INSERT - > (신입 기준) 대부분 이거함
+*DBeaver , workbench 같은 툴을 사용할 경우
+ DML이 오토 커밋으로 설정되어 있어 해제하고 작업해야함
+(dbeaver auto commit 해제)
+DDL(auto commit): CREATE ,ALTER ,DROP
+DCL(auto commit): GRANT, REVOKE
+
+empno: 사원 번호
+ename: 사원 이름
+job: 사원 직책
+mgr: 사수 번호
+hiredate: 입사 날짜
+sal: 급여
+comm:보너스
+deptno:부서번호
+
+
+-- select: 조회할 때 사용
+-- select<컬럼이름> from <테이블 이름>
+select ename from emp; 
+-- 1개 이상 컬럼을 조회할 때는 ,콤마 사용
+select ename, empno from emp
+-- 사원번호, 사원이름, 직책 조회
+select EMPNO ,ENAME , JOB from emp;
+-- as(별칭)
+select ename as '사원이름'from emp
+-- as 사원번호
+select EMPNO  as '사원번호'from emp
+
+select * from emp
+-- where
+-- 20번 부서 사원 모두 조회
+select * from emp where DEPTNO = 20;
+-- 문제1. job이 manager인 사원이름, 번호, 직책, 입사날짜 조회
+select ename, EMPNO ,job, hiredate from emp where job = 'manager'; 
+-- 문제2. job이 manager, salesman인 사원번호, 사원이름 조회
+select ename, EMPNO from emp where job = 'manager' or 'salesman';
+-- 문제3. 사원이름이 ALLEN인 사원의 이름, 직책,입사날짜 조회
+select ENAME,JOB,HIREDATE from emp where ENAME ='ALLEN';
+-- 사원이름이 A로 시작한느 사원의 이름,사원번호 조회
+select ENAME,EMPNO  from emp where ENAME like 'A%';
+-- 사원 이름에 L이 두번 들어간 사원이름, 번호 조회
+select ENAME, EMPNO from EMP where ENAME like '%L%L%';
+
+-- 보너스를 받지 못한 사원의 급여와 번호를 조회
+select SAL ,EMPNO from emp where COMM is null;
+-- 보너스를 받은 사원의 급여와 번호를 조회
+select SAL ,EMPNO from emp where COMM is not null;
