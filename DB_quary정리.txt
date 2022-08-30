@@ -23,17 +23,7 @@ comm:보너스
 deptno:부서번호
 
 
--- select: 조회할 때 사용
--- select<컬럼이름> from <테이블 이름>
-select ename from emp; 
--- 1개 이상 컬럼을 조회할 때는 ,콤마 사용
-select ename, empno from emp
--- 사원번호, 사원이름, 직책 조회
-select EMPNO ,ENAME , JOB from emp;
--- as(별칭)
-select ename as '사원이름'from emp
--- as 사원번호
-select EMPNO  as '사원번호'from emp
+
 
 -- select: 조회할 때 사용
 -- select<컬럼이름> from <테이블 이름>
