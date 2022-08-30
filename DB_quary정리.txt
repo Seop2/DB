@@ -125,3 +125,41 @@ select sum(sal)as "부서별 급여합계", DEPTNO as "부서 번호" from emp g
 select sum(sal)as "부서별 급여합계", DEPTNO as "부서 번호" from emp where DEPTNO = 20 group by DEPTNO having sum(sal)>=5000;
 
 
+-- 문제4. 입사날짜를 월별로 그룹핑하고 월별 입사자를 출력하시오.
+select date_format(HIREDATE,'%M') as '입사 월', COUNT(EMPNO) as '입사 사원 수' from emp group by date_format(HIREDATE,'%M');
+-- 문제5. 직책별로 그룹핑하고 평균 급여를 조회하고, 평균 급여가 1000이 넘는 직책만 출력하시오.(단 직책이 manager는 제외)
+select JOB, avg(SAL) from emp where JOB !='MANAGER' group by JOB having avg(SAL)>1000; 
+-- 문제6. 1982년도에 입사한 모든 사원의 정보 조회
+select * from emp where date_format(HIREDATE,'%Y')='1982';
+-- 문제7. 급여가 1500~2850 사이의 범위에 속하는 사원 이름, 급여, 직책 조회
+select ENAME, SAL, JOB from emp where SAL>=1500 and SAL <=2850;
+
+-- ORDER BY:특정 컬럼을 정렬할때 사용(항상 마지막에 실행 됨)
+-- 아래 쿼리는  오름차순(디폴트값)
+select SAL, ENAME  from EMP order by SAL;
+-- 아래 쿼리는  내림차순
+select SAL, ENAME  from EMP order by SAL DESC;
+-- 컬럼 위치로 정렬하기
+-- ORDER BY는 항상 마지막에 실행되기 때문에 SELECT 컬럼 순서를 알고 있다.
+select ENAME, SAL from emp order by 2 desc;
+
+-- 총 정리
+select DEPTNO, count(EMPNO), sum(SAL) from emp
+where DEPTNO != 10
+group by DEPTNO 
+having count(EMPNO) >=3
+order by count(EMPNO) desc; 
+
+## delete, update, insert
+-- delete (데이터 삭제)
+-- 삭제할때는 항상 where조건으로 삭제하자
+-- delete from emp
+-- truncate 테이블안에 있는 데이터를 데이터를 초기화
+-- truncate table emp;
+-- commit(완전 저장), rollback(이전 상태로 돌아가기)
+-- auto commit을 해제 하면 rollback(뒤 돌아가기)으로 돌아갈 수 있음
+-- auto commit설정되어 있으면 rollback명령어 불가능!
+
+
+
+
