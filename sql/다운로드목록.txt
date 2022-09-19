@@ -1,0 +1,6 @@
+1. live server
+2. auto rename tag
+3. auto close tag
+4. material icon theme
+5. Prettier
+
