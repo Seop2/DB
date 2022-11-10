@@ -21,3 +21,5 @@ db설계 순서
 ### ERwin으로 학생 과목 테이블 설계
  - 학생테이블에 과목번호가 들어갈 경우 학생은 과목 하나씩만 듣게
 ![image](https://user-images.githubusercontent.com/57839278/198917557-ab520404-fd8e-4a08-809e-0b5dfd16268c.png)
+- 쇼핑몰 설계
+![shop](https://user-images.githubusercontent.com/57839278/201092868-59ae36ad-6290-4ee8-b546-b3f5237ce7a9.png)
